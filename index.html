@@ -7,7 +7,7 @@
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      background: #1a1614;
+      background: #0d0b0a;
       color: #c4b5a5;
       font-family: "Noto Serif SC", "宋体", serif;
       display: flex;
@@ -15,6 +15,19 @@
       align-items: center;
       height: 100vh;
       overflow: hidden;
+      background-image: 
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 2px,
+          rgba(255,255,255,0.01) 2px,
+          rgba(255,255,255,0.01) 4px
+        ),
+        radial-gradient(
+          ellipse at 50% 30%,
+          rgba(201,169,110,0.06) 0%,
+          transparent 70%
+        );
     }
 
     .page {
@@ -28,39 +41,107 @@
 
     .page.active { display: block; }
 
+    /* 主菜单容器 */
+    .menu-container {
+      position: relative;
+      width: 100%;
+      max-width: 520px;
+      padding: 3em 2em;
+      text-align: center;
+      border: 1px solid #2a231e;
+      outline: 1px solid #1a1614;
+      outline-offset: 4px;
+      box-shadow: 
+        0 0 60px rgba(0,0,0,0.5),
+        inset 0 0 60px rgba(0,0,0,0.3);
+    }
+
+    .menu-container::before {
+      content: "◇";
+      position: absolute;
+      top: -0.6em;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #4a3f35;
+      font-size: 0.8em;
+      background: #0d0b0a;
+      padding: 0 0.5em;
+    }
+
+    .menu-container::after {
+      content: "◇";
+      position: absolute;
+      bottom: -0.6em;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #4a3f35;
+      font-size: 0.8em;
+      background: #0d0b0a;
+      padding: 0 0.5em;
+    }
+
     .title {
-      font-size: 3em;
-      letter-spacing: 0.3em;
-      margin-bottom: 0.3em;
+      font-size: 3.2em;
+      letter-spacing: 0.4em;
+      margin-bottom: 0.2em;
       color: #c9a96e;
+      text-shadow: 0 0 30px rgba(201,169,110,0.15);
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: #4a3f35;
+      margin: 1.5em auto;
     }
 
     .subtitle {
-      font-size: 0.9em;
+      font-size: 0.85em;
       color: #6b5e4e;
-      margin-bottom: 3em;
+      margin-bottom: 2.5em;
       font-style: italic;
+      letter-spacing: 0.15em;
     }
 
     .btn {
       display: block;
       width: 100%;
-      padding: 0.8em;
-      margin: 0.5em 0;
+      padding: 0.9em;
+      margin: 0.6em 0;
       background: transparent;
-      border: 1px solid #4a3f35;
+      border: 1px solid #3a3028;
       color: #c4b5a5;
-      font-size: 1.1em;
+      font-size: 1em;
       font-family: inherit;
       cursor: pointer;
       transition: 0.3s;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.2em;
+      position: relative;
     }
 
     .btn:hover {
-      background: #2a231e;
+      background: rgba(201,169,110,0.06);
       border-color: #c9a96e;
       color: #c9a96e;
+    }
+
+    .btn::after {
+      content: "→";
+      position: absolute;
+      right: 1em;
+      opacity: 0;
+      transition: 0.3s;
+    }
+
+    .btn:hover::after {
+      opacity: 0.5;
+    }
+
+    .footer-note {
+      margin-top: 2.5em;
+      font-size: 0.7em;
+      color: #3a3028;
+      letter-spacing: 0.2em;
     }
   </style>
 </head>
@@ -68,11 +149,16 @@
 
   <!-- 主菜单 -->
   <div class="page active" id="page-menu">
-    <div class="title">枷</div>
-    <div class="subtitle">—— 你读过这本书，现在你在这里。</div>
+    <div class="menu-container">
+      <div class="title">枷</div>
+      <div class="divider"></div>
+      <div class="subtitle">你读过这本书，现在你在这里。</div>
 
-    <button class="btn" onclick="alert('剧情待添加')">开始游戏</button>
-    <button class="btn" onclick="showPage('page-about')">关于</button>
+      <button class="btn" onclick="alert('剧情待添加')">开始游戏</button>
+      <button class="btn" onclick="showPage('page-about')">关于</button>
+
+      <div class="footer-note">◈ 昭 和  ·  老 宅  ·  盲 眼 的 她 ◈</div>
+    </div>
   </div>
 
   <!-- 关于页面 -->
