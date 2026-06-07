@@ -1,1 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>枷</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    body {
+      background: #1a1614;
+      color: #c4b5a5;
+      font-family: "Noto Serif SC", "宋体", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .page {
+      display: none;
+      width: 100%;
+      max-width: 500px;
+      padding: 2em;
+      text-align: center;
+      line-height: 2.2;
+    }
+
+    .page.active { display: block; }
+
+    .title {
+      font-size: 3em;
+      letter-spacing: 0.3em;
+      margin-bottom: 0.3em;
+      color: #c9a96e;
+    }
+
+    .subtitle {
+      font-size: 0.9em;
+      color: #6b5e4e;
+      margin-bottom: 3em;
+      font-style: italic;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 0.8em;
+      margin: 0.5em 0;
+      background: transparent;
+      border: 1px solid #4a3f35;
+      color: #c4b5a5;
+      font-size: 1.1em;
+      font-family: inherit;
+      cursor: pointer;
+      transition: 0.3s;
+      letter-spacing: 0.1em;
+    }
+
+    .btn:hover {
+      background: #2a231e;
+      border-color: #c9a96e;
+      color: #c9a96e;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 主菜单 -->
+  <div class="page active" id="page-menu">
+    <div class="title">枷</div>
+    <div class="subtitle">—— 你读过这本书，现在你在这里。</div>
+
+    <button class="btn" onclick="alert('剧情待添加')">开始游戏</button>
+    <button class="btn" onclick="showPage('page-about')">关于</button>
+  </div>
+
+  <!-- 关于页面 -->
+  <div class="page" id="page-about">
+    <p>《枷》</p>
+    <p style="font-size:0.85em;color:#6b5e4e;">昭和年代，一座老宅。</p>
+    <p style="font-size:0.85em;color:#6b5e4e;">一个盲眼的大小姐，和她的贴身仆人。</p>
+    <p style="font-size:0.85em;color:#6b5e4e;">你读过她的故事。</p>
+    <p style="font-size:0.85em;color:#6b5e4e;">现在，你在这里。</p>
+    <br>
+    <button class="btn" onclick="showPage('page-menu')">返回</button>
+  </div>
+
+  <script>
+    function showPage(id) {
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
